@@ -53,5 +53,5 @@ deploy:
   when: manual
   script:
     - docker-compose -f docker-compose.deploy.yml down
-#    - docker volume rm motion-backend-and-droplet_frontend || true
+    - docker volume rm backend-david-jm-mijail_frontend || true
     - docker-compose -f docker-compose.deploy.yml up -d
