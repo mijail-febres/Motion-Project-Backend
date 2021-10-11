@@ -22,3 +22,6 @@ services:
       - 5433:5432
     volumes:
       - postgres_docker_volume:/var/lib/postgresql/data
+
+volumes:
+  postgres_docker_volume:
