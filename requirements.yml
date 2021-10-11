@@ -1,17 +1,13 @@
 name: backend_motion
 
 dependencies:
-  - python=3.6
-  - psycopg2
+  - python=3.9.7
+  - psycopg2=2.8.5
   - pip:
-    - Django==2.2.2
-    - flake8
-    - djangorestframework==3.9.4
-    - markdown==3.1.1
-    - django-filter==2.1.0
-    - djangorestframework_simplejwt==4.3.0
-    - coreapi==2.3.3
-    - Pygments==2.4.2
-    - gunicorn
-    - Pillow
+      - django==3.2.7
+      - djangorestframework==3.12.4
+      - djangorestframework-simplejwt==4.8.0
+      - drf-yasg==1.20.0
+      - pillow==8.3.2
+      - gunicorn==20.1.0
 
