@@ -9,7 +9,10 @@ https://docs.djangoproject.com/en/2.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
+<<<<<<< HEAD
+=======
 
+>>>>>>> 9d0789a0ba03c974dabe251efb6155fcc25cbf09
 import ast
 import os
 from datetime import timedelta
@@ -27,8 +30,14 @@ SECRET_KEY = 'p@^t-wws_f0fc+k)yf)=^$zq-a+kyhckw@v)3wf*q1^(2=-(ka'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = ast.literal_eval(os.environ.get('DJANGO_DEBUG'))
+<<<<<<< HEAD
+#DEBUG = True
+
+ALLOWED_HOSTS = ['*']
+=======
 
 ALLOWED_HOSTS = ['*'] #['164.90.236.214', 'backend']
+>>>>>>> 9d0789a0ba03c974dabe251efb6155fcc25cbf09
 
 
 # Application definition
@@ -40,6 +49,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+<<<<<<< HEAD
+=======
 
     # own
     'users',
@@ -48,6 +59,7 @@ INSTALLED_APPS = [
     'comment',
     'friend_request',
 
+>>>>>>> 9d0789a0ba03c974dabe251efb6155fcc25cbf09
     # 3rd party
     'rest_framework',
     'drf_yasg',
@@ -97,6 +109,17 @@ DATABASES = {
         "PASSWORD": os.environ.get('POSTGRES_PASSWORD'),
     }
 }
+# Deploy
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#        'NAME': os.environ.get('POSTGRES_DB'),
+#        "PORT": os.environ.get('POSTGRES_PORT'),
+#        "HOST": os.environ.get('POSTGRES_HOST'),
+#        "USER": os.environ.get('POSTGRES_USER'),
+#        "PASSWORD": os.environ.get('POSTGRES_PASSWORD'),
+#    }
+#}
 
 
 # Password validation
@@ -134,7 +157,32 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
+# url path
+STATIC_URL = '/static-files/'
+# directory path on machine
+STATIC_ROOT = os.path.join(BASE_DIR, 'static-files') if DEBUG else '/static-files/'
 
+# url path
+MEDIA_URL = '/media-files/'
+# directory path on machine
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media-files') if DEBUG else '/media-files/'
+
+# Default primary key field type
+# https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ]
+}
+
+<<<<<<< HEAD
+=======
 STATIC_URL = '/static/'
 
 
@@ -165,10 +213,28 @@ REST_FRAMEWORK = {
     ]
 }
 
+>>>>>>> 9d0789a0ba03c974dabe251efb6155fcc25cbf09
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(days=5),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=5)
 }
+<<<<<<< HEAD
+#AUTH_USER_MODEL = 'user.User'
+#
+## DOCUMENTATION
+#SWAGGER_SETTINGS = {
+#    'USE_SESSION_AUTH': False,  # Change settings to True to enable Django Login option
+#    'LOGIN_URL': 'admin/',  # URL For Django Login
+#    'LOGOUT_URL': 'admin/logout/',  # URL For Django Logout
+#    'SECURITY_DEFINITIONS': {  # Allows usage of Access token to make requests on the docs.
+#        'Bearer': {
+#            'type': 'apiKey',
+#            'name': 'Authorization',
+#            'in': 'header'
+#        }
+#    }
+#}
+=======
 
 # users = name of the app | User = name of the model
 AUTH_USER_MODEL = 'users.User'
@@ -186,3 +252,4 @@ SWAGGER_SETTINGS = {
         }
     }
 }
+>>>>>>> 9d0789a0ba03c974dabe251efb6155fcc25cbf09
