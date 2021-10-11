@@ -21,6 +21,7 @@ RUN mkdir -p /scripts
 COPY ./scripts /scripts
 RUN chmod +x /scripts
 
+
 WORKDIR /frontend
 COPY ./frontend/package.json /frontend/
 RUN npm install
