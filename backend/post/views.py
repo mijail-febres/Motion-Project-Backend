@@ -1,5 +1,5 @@
-from rest_framework import status
-from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
+#from rest_framework import status
+#from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
 from rest_framework.response import Response
 from rest_framework.generics import ListCreateAPIView, GenericAPIView, RetrieveUpdateDestroyAPIView, ListAPIView
 from .models import Post
@@ -23,7 +23,7 @@ class ListCreatePostView(ListCreateAPIView): #concrete View
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
-"""
+
 class ListUserLikes(ListAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
@@ -57,7 +57,9 @@ class ReadUpdateDeletePost(RetrieveUpdateDestroyAPIView): #which view to be used
     #lookup_url_kwarg = 'post_id' #where is this 'xxx_id' coming from?
     #permission_classes = [IsObjectAuthorOrReadOnly]
     #permission_classes = [IsAuthenticatedOrReadOnly]  >>> needs to be customized
-    permission_classes = [IsAdminOrOwnerOrReadOnly]  # work as a NAD here the comma or | will be a OR
+
+    #to be used
+    # permission_classes = [IsAdminOrOwnerOrReadOnly]  # work as a NAD here the comma or | will be a OR
 
     #2 diffrent types of permissions classes:
     # general permission: isauthenticated, isadmin
@@ -78,4 +80,4 @@ class ToggleLikePost(GenericAPIView):
         else:
             post.likes.add(user)
         return Response(self.get_serializer(post).data)
-"""
+
