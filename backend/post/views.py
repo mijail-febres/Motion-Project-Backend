@@ -1,9 +1,9 @@
 # from rest_framework import status
-# from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
+from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
 from rest_framework.response import Response
 from rest_framework.generics import ListCreateAPIView, GenericAPIView, RetrieveUpdateDestroyAPIView, ListAPIView
 from .models import Post
-# from .permissions import IsAdminOrOwnerOrReadOnly, PermissionName
+from .permissions import IsAdminOrOwnerOrReadOnly, PermissionName
 from .serializers import PostSerializer
 from django.contrib.auth import get_user_model
 from comment.models import Comment
@@ -22,7 +22,7 @@ class ListCreatePostView(ListCreateAPIView):  # concrete View
     queryset = Post.objects.all().order_by('updated').reverse()
     serializer_class = PostSerializer
 
-    # permission_classes = [IsAuthenticated | ReadOnly]
+    permission_classes = [IsAuthenticated | ReadOnly]
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
@@ -54,20 +54,11 @@ class ListPostbyUser(ListAPIView):
         return queryset
 
 
-class ReadUpdateDeletePost(RetrieveUpdateDestroyAPIView):  # which view to be used: GenericAPIView or ?
+class ReadUpdateDeletePost(RetrieveUpdateDestroyAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
     lookup_field = 'id'
-    # lookup_url_kwarg = 'post_id' #where is this 'xxx_id' coming from?
-    # permission_classes = [IsObjectAuthorOrReadOnly]
-    # permission_classes = [IsAuthenticatedOrReadOnly]  >>> needs to be customized
-
-    # to be used
-    # permission_classes = [IsAdminOrOwnerOrReadOnly]  # work as a NAD here the comma or | will be a OR
-
-    # 2 diffrent types of permissions classes:
-    # general permission: isauthenticated, isadmin
-    # object level permission, on a specific instance: for ex to the logged in user
+    permission_classes = [IsAdminOrOwnerOrReadOnly]
 
 
 class ToggleLikePost(GenericAPIView):
