@@ -2,7 +2,7 @@ name: backend_motion
 
 dependencies:
   - python=3.9.7
-  - psycopg2=2.8.5
+  - psycopg2
   - pip==21.2.4
   - pip:
       - django==3.2.7
