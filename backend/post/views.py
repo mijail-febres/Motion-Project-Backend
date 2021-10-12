@@ -6,6 +6,7 @@ from .models import Post
 # from .permissions import IsAdminOrOwnerOrReadOnly, PermissionName
 from .serializers import PostSerializer
 from django.contrib.auth import get_user_model
+from comment.models import Comment
 
 User = get_user_model()
 
@@ -82,5 +83,19 @@ class ToggleLikePost(GenericAPIView):
             post.likes.remove(user)
         else:
             post.likes.add(user)
+        return Response(self.get_serializer(post).data)
+
+
+class CommentPost(GenericAPIView):
+    pass
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+    lookup_field = 'id'
+
+    def post(self, request, *args, **kwargs):
+        post = self.get_object()
+        user = request.user
+        comment_obj, created = Comment.objects.get_or_create(user=user, content=request.data['content'])
+        post.comment.add(comment_obj)
         return Response(self.get_serializer(post).data)
 
