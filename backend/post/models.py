@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.db import models
+# from comment.models import Comment
 
 User = get_user_model()
 
@@ -11,7 +12,7 @@ class Post(models.Model):
     content = models.TextField(verbose_name="content", max_length=300)
     images = models.ImageField(verbose_name="images", upload_to='post_media', blank=True, null=True)
     # comments =
-    # comment = models.ForeignKey(verbose_name="comment", to=Comment, related_name='posts', on_delete=models.CASCADE)
+    # comment = models.ManyToManyField(verbose_name="comment", to=Comment, blank=True, on_delete=models.CASCADE)
     likes = models.ManyToManyField(verbose_name="likes", to=User, blank=True, related_name='liked_posts')
     created = models.DateTimeField(verbose_name="created", auto_now_add=True)
     updated = models.DateTimeField(verbose_name="updated", auto_now=True)

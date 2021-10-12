@@ -26,8 +26,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'p@^t-wws_f0fc+k)yf)=^$zq-a+kyhckw@v)3wf*q1^(2=-(ka'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = ast.literal_eval(os.environ.get('DJANGO_DEBUG'))
-# DEBUG = True
+# DEBUG = ast.literal_eval(os.environ.get('DJANGO_DEBUG'))
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']  # ['164.90.236.214', 'backend']
 
@@ -99,8 +99,8 @@ DATABASES = {
     }
 }
 
-
 # Password validation
+
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
