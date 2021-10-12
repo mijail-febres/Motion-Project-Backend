@@ -15,7 +15,7 @@ from datetime import timedelta
 from pathlib import Path
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-#BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -164,7 +164,7 @@ REST_FRAMEWORK = {
 
 # url path
 # directory path on machine
-#STATIC_ROOT = os.path.join(BASE_DIR, 'static-files')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static-files')
 
 # url path
 MEDIA_URL = '/media-files/'
