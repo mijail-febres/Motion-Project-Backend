@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.conf import settings
-from post.models import Post
+# from post.models import Post
 
 
 def user_directory_path(instance, filename):
@@ -69,12 +69,12 @@ class User(AbstractUser):
         blank=True,
     )
 
-    liked_posts = models.ManyToManyField(
-        verbose_name='liked posts',
-        to=Post,
-        related_name='liked_by',
-        blank=True,
-    )
+    # liked_posts = models.ManyToManyField(
+    #     verbose_name='liked posts',
+    #     to=Post,
+    #     related_name='liked_by',
+    #     blank=True,
+    # )
 
     avatar = models.ImageField(upload_to=user_directory_path, blank=True, null=True)
 

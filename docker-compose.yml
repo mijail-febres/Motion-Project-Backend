@@ -8,12 +8,11 @@ services:
     env_file:
       - ./env/dev.env
     volumes:
-#      - ./backend:/backend
+      - ./backend:/backend
       - ./static-files:/static-files
       - ./media-files:/media-files
       - ./frontend:/frontend/build/
-#    command: "python manage.py runserver 0:8000"
-    command: "sh /scripts/run.sh"
+    command: "sh /scripts/run_local.sh"
     depends_on:
       - postgres
 
@@ -26,19 +25,19 @@ services:
     volumes:
       - postgres_docker_volume:/var/lib/postgresql/data
 
-  nginx:
-    build: ./nginx_local
-    image: nginx:latest
-    ports:
-      - 80:80
-      - 443:443
-    depends_on:
-      - backend
-    volumes:
-      - ./nginx_local/template.conf:/etc/nginx/conf.d/default.conf
-      - static-files:/static-files
-      - media-files:/media-files
-      - frontend:/frontend
+#  nginx:
+#    build: ./nginx_local
+#    image: nginx:latest
+#    ports:
+#      - 80:80
+#      - 443:443
+#    depends_on:
+#      - backend
+#    volumes:
+#      - ./nginx_local/template.conf:/etc/nginx/conf.d/default.conf
+#      - static-files:/static-files
+#      - media-files:/media-files
+#      - frontend:/frontend
 
 volumes:
   postgres_docker_volume:
