@@ -1,4 +1,9 @@
-from rest_framework.generics import ListCreateAPIView, ListAPIView, GenericAPIView
+from rest_framework.generics import (
+    ListCreateAPIView,
+    ListAPIView,
+    GenericAPIView,
+    RetrieveUpdateDestroyAPIView,
+)
 from rest_framework.response import Response
 from users.serializers import UserSerializer, UserFollowSerializer
 from users.models import User
@@ -51,3 +56,9 @@ class FollowingUsersView(ListAPIView):
 
     def get_queryset(self):
         return self.request.user.followers.all()
+
+
+class ReadUpdateDeleteUser(RetrieveUpdateDestroyAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    lookup_field = "id"
