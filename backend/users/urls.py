@@ -4,7 +4,7 @@ from .views import (
     FollowUsersView,
     FollowersUsersView,
     FollowingUsersView,
-    ListUserView
+    ListUserView,
 )
 
 urlpatterns = [

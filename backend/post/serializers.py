@@ -18,6 +18,6 @@ class PostSerializer(serializers.ModelSerializer):
             "likes",
             "created",
             "updated",
-            "shared"
+            "shared",
         ]
         read_only_fields = ["author"]

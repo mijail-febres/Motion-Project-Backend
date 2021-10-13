@@ -11,7 +11,6 @@ from .models import Post
 from .serializers import PostSerializer
 from django.contrib.auth import get_user_model
 from comment.models import Comment
-from django.utils import timezone
 
 User = get_user_model()
 
@@ -115,6 +114,7 @@ class CommentPostView(GenericAPIView):
         )
         post.comment.add(comment_obj)
         return Response(self.get_serializer(post).data)
+
 
 """
 class SharedPostView(GenericAPIView):
