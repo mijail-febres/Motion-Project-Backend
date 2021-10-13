@@ -26,6 +26,12 @@ class ListCreatePostView(ListCreateAPIView):  # concrete View
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
 
+    def get_queryset(self):
+        search = self.request.query_params.get('search')
+        if search:
+            return Post.objects.filter(content__contains=search)
+        return Post.objects.all()
+
 class ListUserLikes(ListAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
