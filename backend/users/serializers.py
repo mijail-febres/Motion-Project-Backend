@@ -18,3 +18,8 @@ class UserSerializer(serializers.ModelSerializer):
             "avatar",
         ]
         read_only_fields = ["email"]
+
+class UserFollowSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['id', 'username', 'email', 'followers', 'followees']
