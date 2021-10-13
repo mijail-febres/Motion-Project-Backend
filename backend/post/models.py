@@ -27,6 +27,13 @@ class Post(models.Model):
     )
     created = models.DateTimeField(verbose_name="created", auto_now_add=True)
     updated = models.DateTimeField(verbose_name="updated", auto_now=True)
+    shared = models.IntegerField(verbose_name="shared", blank=True, null=True)
+    #shared_content = models.TextField(verbose_name="shared_content", blank=True, null=True, max_length=300)
+    #shared_on = models.DateTimeField(verbose_name="shared_on", auto_now=True)
+    #shared_user = models.ForeignKey(to=User, on_delete=models.CASCADE, blank=True, null=True, related_name='+')
+
+    #class Meta:
+    #    ordering = ['-created_on', '-shared_on']
 
     def __str__(self):
         return (
