@@ -23,7 +23,6 @@ from django.conf import settings
 urlpatterns = [
     path("backend/admin/", admin.site.urls),
     path("backend/api/", include("post.urls")),
-    path("backend/api/", include("comment.urls")),
     path("backend/api/", include("users.urls")),
     path(
         "backend/api/auth/token/",
