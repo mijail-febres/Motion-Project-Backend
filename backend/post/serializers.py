@@ -1,10 +1,11 @@
 from rest_framework import serializers
-
-# from comment.serializers import CommentSerializer
+from comment.serializers import CommentSerializer
 from .models import Post
 
 
 class PostSerializer(serializers.ModelSerializer):
+    comment = CommentSerializer(many=True, required=False)
+
     class Meta:
         model = Post
         # 1 comment might be missing or to be ajusted for the fields:
@@ -18,11 +19,4 @@ class PostSerializer(serializers.ModelSerializer):
             "created",
             "updated",
         ]
-        # fields = ['id', 'author', 'title', 'content', 'images', 'likes', 'comment', 'created', 'updated']
-        # fields = ['id', 'author', 'title', 'content', 'images', 'likes', 'created', 'updated']
         read_only_fields = ["author"]
-
-    # def to_representation(self, instance):
-    #     representation = super().to_representation(instance)
-    #     representation['comment'] = CommentSerializer(instance.comment).data
-    #     return representation
