@@ -2,7 +2,9 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.conf import settings
 
+
 # from post.models import Post
+# from friend_request.models import FriendRequest
 
 
 def user_directory_path(instance, filename):
@@ -34,7 +36,7 @@ class User(AbstractUser):
         verbose_name="active",
         default=True,
         help_text="Designates whether this user should be treated as active. "
-        "Unselect this instead of deleting accounts.",
+                  "Unselect this instead of deleting accounts.",
     )
     date_joined = models.DateTimeField(verbose_name="date joined", auto_now_add=True)
 
@@ -55,12 +57,18 @@ class User(AbstractUser):
         blank=True,
     )
 
-    # liked_posts = models.ManyToManyField(
-    #     verbose_name='liked posts',
-    #     to=Post,
-    #     related_name='liked_by',
-    #     blank=True,
-    # )
+    friend_request = models.ManyToManyField(
+        verbose_name="friend_request",
+        to=settings.AUTH_USER_MODEL,
+        related_name="requested_from",
+        blank=True,
+    )
+
+    friends_with = models.ManyToManyField(
+        to=settings.AUTH_USER_MODEL,
+        related_name="friends_of",
+        blank=True,
+    )
 
     avatar = models.ImageField(upload_to=user_directory_path, blank=True, null=True)
 

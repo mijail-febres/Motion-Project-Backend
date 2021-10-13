@@ -45,7 +45,6 @@ INSTALLED_APPS = [
     "post",
     "registration_profile",
     "comment",
-    "friend_request",
     # 3rd party
     "rest_framework",
     "drf_yasg",

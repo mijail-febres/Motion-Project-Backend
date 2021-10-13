@@ -19,7 +19,7 @@ class Post(models.Model):
     images = models.ImageField(
         verbose_name="images", upload_to="post_media", blank=True, null=True
     )
-    comment = models.ManyToManyField(
+    comments = models.ManyToManyField(
         verbose_name="comments", to=Comment, blank=True, related_name="commented_posts"
     )
     likes = models.ManyToManyField(
