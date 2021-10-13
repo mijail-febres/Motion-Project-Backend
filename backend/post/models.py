@@ -12,7 +12,7 @@ class Post(models.Model):
     content = models.TextField(verbose_name="content", max_length=300)
     images = models.ImageField(verbose_name="images", upload_to='post_media', blank=True, null=True)
     comment = models.ManyToManyField(verbose_name="comments", to=Comment, blank=True,
-                                related_name='commented_posts')
+                                     related_name='commented_posts')
     likes = models.ManyToManyField(verbose_name="likes", to=User, blank=True, related_name='liked_posts')
     created = models.DateTimeField(verbose_name="created", auto_now_add=True)
     updated = models.DateTimeField(verbose_name="updated", auto_now=True)

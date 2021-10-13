@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import ListCreatePostView, ReadUpdateDeletePost, ListPostbyUser, ListFolloweesPosts, ToggleLikePost, \
-    ListUserLikes, CommentPost
+    ListUserLikes, CommentPostView
 
 urlpatterns = [
     path('social/posts/', ListCreatePostView.as_view()),
@@ -10,7 +10,7 @@ urlpatterns = [
     path('social/posts/user/<int:id>/', ListPostbyUser.as_view()),
     path('social/posts/following/', ListFolloweesPosts.as_view()),
     path('social/posts/toggle-like/<int:id>/', ToggleLikePost.as_view()),
-    path('social/comments/<int:id>/', CommentPost.as_view()),
+    path('social/comments/<int:pk>/', CommentPostView.as_view()),
     path('userlikes/', ListUserLikes.as_view()),
 
 ]
