@@ -21,6 +21,7 @@ class ListUserView(ListAPIView):
     def get_queryset(self):
         return User.objects.filter(user=self.request.user)
 
+
 class FollowUsersView(GenericAPIView):
     serializer_class = UserFollowSerializer
     queryset = User.objects.all()
