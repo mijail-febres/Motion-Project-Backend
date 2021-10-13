@@ -19,5 +19,6 @@ class PostSerializer(serializers.ModelSerializer):
             "created",
             "updated",
             "shared",
+            "comment"
         ]
         read_only_fields = ["author"]
