@@ -52,7 +52,7 @@ export const getUserToken = (dispatch, email, password) => {
 };
 
 export const getUserInfo = (dispatch, token) => {
-  const url = "https://motion.propulsion-home.ch/backend/api/users/me/";
+  const url = "https://motion-backend-team-dmj.propulsion-learn.ch/backend/api/users/me/";
   const headers = new Headers({
     "Content-Type": "application/json",
     Authorization: `Bearer ${token}`,
