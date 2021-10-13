@@ -19,6 +19,7 @@ class UserSerializer(serializers.ModelSerializer):
         ]
         read_only_fields = ["email"]
 
+
 class UserFollowSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
