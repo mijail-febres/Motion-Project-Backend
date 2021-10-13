@@ -13,5 +13,6 @@ urlpatterns = [
     path('social/comments/<int:id>/', CommentPost.as_view()),
     path('social/posts/likes/', ListUserLikes.as_view()),
     path('social/posts/?search=', ListCreatePostView.as_view()),
+    #path('social/posts/', SharedPostView.as_view()),
 
 ]
