@@ -12,5 +12,6 @@ urlpatterns = [
     path('social/posts/toggle-like/<int:id>/', ToggleLikePost.as_view()),
     path('social/comments/<int:id>/', CommentPost.as_view()),
     path('social/posts/likes/', ListUserLikes.as_view()),
+    path('social/posts/?search=', ListCreatePostView.as_view()),
 
 ]
