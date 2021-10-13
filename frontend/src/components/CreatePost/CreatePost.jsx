@@ -23,7 +23,7 @@ const CreatePost = (props) => {
     console.log("submitting post");
     console.log("content", content);
     console.log("image", image);
-    const url = "https://motion.propulsion-home.ch/backend/api/social/posts/";
+    const url = "https://motion-backend-team-dmj.propulsion-learn.ch/backend/api/social/posts/";
     const token = localStorage.getItem("motion-auth-token");
     const headers = new Headers({
       Authorization: `Bearer ${token}`,
