@@ -1,9 +1,8 @@
 # from rest_framework import status
-from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.generics import ListCreateAPIView, GenericAPIView, RetrieveUpdateDestroyAPIView, ListAPIView
 from .models import Post
-from .permissions import IsAdminOrOwnerOrReadOnly, PermissionName
 from .serializers import PostSerializer
 from django.contrib.auth import get_user_model
 from comment.models import Comment
@@ -22,7 +21,7 @@ class ListCreatePostView(ListCreateAPIView):  # concrete View
     queryset = Post.objects.all().order_by('updated').reverse()
     serializer_class = PostSerializer
 
-    permission_classes = [IsAuthenticated | ReadOnly]
+    #permission_classes = [IsAuthenticated | ReadOnly]
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
@@ -58,7 +57,7 @@ class ReadUpdateDeletePost(RetrieveUpdateDestroyAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
     lookup_field = 'id'
-    permission_classes = [IsAdminOrOwnerOrReadOnly]
+    # permission_classes = [IsAuthenticated]
 
 
 class ToggleLikePost(GenericAPIView):
