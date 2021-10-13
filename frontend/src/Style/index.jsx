@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
-export const GlobalStyle =  createGlobalStyle`
+export const GlobalStyle = createGlobalStyle`
     * {
     margin: 0;
     padding: 0;
@@ -12,17 +12,19 @@ export const GlobalStyle =  createGlobalStyle`
 `;
 
 export const themeDefault = {
-    linerGradientColor: 'linear-gradient(132.96deg, #C468FF 3.32%, #6E91F6 100%);',
-    boxShadow: '0px 0px 1px rgba(0, 0, 0, 0.2), 0px 10px 20px rgba(0, 0, 0, 0.05);',
+  linerGradientColor:
+    "linear-gradient(132.96deg, #C468FF 3.32%, #6E91F6 100%);",
+  boxShadow:
+    "0px 0px 1px rgba(0, 0, 0, 0.2), 0px 10px 20px rgba(0, 0, 0, 0.05);",
 
-    //font sizes
-    fontTiny: '10px',
-    fontSmall: '14px',
-    fontDefault: '16px',
-    fontBig: '22px',
-    fontLarge: '24px',
-    fontExtraLarge: '40px',
+  //font sizes
+  fontTiny: "10px",
+  fontSmall: "14px",
+  fontDefault: "16px",
+  fontBig: "22px",
+  fontLarge: "24px",
+  fontExtraLarge: "40px",
 
-    //border radius
-    borderRadiusDefault: '30px',
+  //border radius
+  borderRadiusDefault: "30px",
 };

@@ -1,9 +1,9 @@
 const initialState = {
-    postsList: null
+  postsList: null,
 };
 
 const friendsPosts = (state = initialState, action) => {
-    return state;
-}
+  return state;
+};
 
 export default friendsPosts;

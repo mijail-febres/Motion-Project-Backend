@@ -1,15 +1,25 @@
-import styled from "styled-components";
 import React from "react";
-
-const StyledButton = styled.button`
-width: 
-  font-size: 1.5em;
-  text-align: center;
-  color: palevioletred;
-`;
+import { StyledButtonBig, StyledButtonSmall } from "./ButtonStyled";
 
 const Button = (props) => {
-  return <StyledButton> {props.title} </StyledButton>;
+  return (
+    <div>
+      {props.buttonType === "Big" ? (
+        <StyledButtonBig onClick={props.onClickFunction}>
+          {" "}
+          {props.title}{" "}
+        </StyledButtonBig>
+      ) : (
+        <StyledButtonSmall
+          onClick={props.onClickFunction}
+          isFollowing={props.isFollowing}
+        >
+          {" "}
+          {props.title}{" "}
+        </StyledButtonSmall>
+      )}
+    </div>
+  );
 };
 
 export default Button;
