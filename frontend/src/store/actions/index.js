@@ -28,7 +28,8 @@ export const setUserClicked = (user) => {
 };
 
 export const getUserToken = (dispatch, email, password) => {
-  const url = "https://motion.propulsion-home.ch/backend/api/auth/token/";
+  // const url = "https://motion.propulsion-home.ch/backend/api/auth/token/";
+  const url = "https://motion-backend-team-dmj.propulsion-learn.ch/backend/api/auth/token/";
   const headers = new Headers({
     "Content-Type": "application/json",
   });
