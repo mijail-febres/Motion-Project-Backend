@@ -1,7 +1,12 @@
 # from rest_framework import status
-from rest_framework.permissions import IsAuthenticated
+# from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-from rest_framework.generics import ListCreateAPIView, GenericAPIView, RetrieveUpdateDestroyAPIView, ListAPIView
+from rest_framework.generics import (
+    ListCreateAPIView,
+    GenericAPIView,
+    RetrieveUpdateDestroyAPIView,
+    ListAPIView,
+)
 from .models import Post
 from .serializers import PostSerializer
 from django.contrib.auth import get_user_model
@@ -19,19 +24,20 @@ class ListCreatePostView(ListCreateAPIView):  # concrete View
     GET Post text
     """
 
-    queryset = Post.objects.all().order_by('updated').reverse()
+    queryset = Post.objects.all().order_by("updated").reverse()
     serializer_class = PostSerializer
 
-    #permission_classes = [IsAuthenticated | ReadOnly]
+    # permission_classes = [IsAuthenticated | ReadOnly]
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
 
     def get_queryset(self):
-        search = self.request.query_params.get('search')
+        search = self.request.query_params.get("search")
         if search:
             return Post.objects.filter(content__icontains=search)
         return Post.objects.all()
+
 
 class ListUserLikes(ListAPIView):
     queryset = Post.objects.all()
@@ -54,23 +60,33 @@ class ListPostbyUser(ListAPIView):
 
     def get_queryset(self):
         if self.kwargs:
-            queryset = Post.objects.all().filter(author=self.kwargs['id']).order_by('updated').reverse()
+            queryset = (
+                Post.objects.all()
+                .filter(author=self.kwargs["id"])
+                .order_by("updated")
+                .reverse()
+            )
         else:
-            queryset = Post.objects.all().filter(author=self.request.user).order_by('updated').reverse()
+            queryset = (
+                Post.objects.all()
+                .filter(author=self.request.user)
+                .order_by("updated")
+                .reverse()
+            )
         return queryset
 
 
 class ReadUpdateDeletePost(RetrieveUpdateDestroyAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
-    lookup_field = 'id'
+    lookup_field = "id"
     # permission_classes = [IsAuthenticated]
 
 
 class ToggleLikePost(GenericAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
-    lookup_field = 'id'
+    lookup_field = "id"
 
     def post(self, request, *args, **kwargs):
         post = self.get_object()
@@ -83,16 +99,20 @@ class ToggleLikePost(GenericAPIView):
         return Response(self.get_serializer(post).data)
 
 
-class CommentPost(GenericAPIView):
-    pass
+class CommentPostView(GenericAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
-    lookup_field = 'id'
+
+    def get(self, request, *args, **kwargs):
+        post = self.get_object()
+        return Response(self.get_serializer(post).data)
 
     def post(self, request, *args, **kwargs):
         post = self.get_object()
         user = request.user
-        comment_obj, created = Comment.objects.get_or_create(user=user, content=request.data['content'])
+        comment_obj, created = Comment.objects.get_or_create(
+            user=user, content=request.data["content"]
+        )
         post.comment.add(comment_obj)
         return Response(self.get_serializer(post).data)
 

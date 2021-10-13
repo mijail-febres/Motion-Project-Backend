@@ -1,4 +1,5 @@
 version: "3"
 services:
   backend:
+    network_mode: bridge
     image: "${CI_PIPELINE_ID}:${CI_COMMIT_REF_NAME}"
