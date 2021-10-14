@@ -65,7 +65,7 @@ const Profile = (props) => {
       dispatch(() => getUserInfo(dispatch, tokenInLocalStorage));
 
       // fetch posts of user
-      const url = `https://motion.propulsion-home.ch/backend/api/social/posts/user/${userIdClicked}/`;
+      const url = `https://motion-backend-team-dmj.propulsion-learn.ch/backend/api/social/posts/user/${userIdClicked}/`;
       console.log(url);
       const headers = new Headers({
         "Content-Type": "application/json",
@@ -81,7 +81,7 @@ const Profile = (props) => {
           setPosts(data.results);
         });
       // fetch userInfo
-      const urlUserInfo = `https://motion.propulsion-home.ch/backend/api/users/${userIdClicked}/`;
+      const urlUserInfo = `https://motion-backend-team-dmj.propulsion-learn.ch/backend/api/users/${userIdClicked}/`;
       fetch(urlUserInfo, config)
         .then((res) => res.json())
         .then((data) => {
