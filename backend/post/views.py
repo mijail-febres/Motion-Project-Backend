@@ -18,10 +18,19 @@ User = get_user_model()
 
 class ListCreatePostView(ListCreateAPIView):  # concrete View
 
-    # preparation for API Documentation:
+    # Endpoints description for API Documentation:
     """
+
     get:
-    GET Post text
+    Get all posts from all users
+
+    Description more detailed...
+
+    post:
+    Create a new item
+
+    Details to be displayed: author, title, content, likes, etc.
+
     """
 
     queryset = Post.objects.all().order_by("updated").reverse()
