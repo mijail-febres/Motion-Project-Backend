@@ -84,7 +84,6 @@ class ReadUpdateDeletePost(RetrieveUpdateDestroyAPIView):
     permission_classes = [IsAdminOrOwnerOrReadOnly]
 
 
-
 class ToggleLikePost(GenericAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
