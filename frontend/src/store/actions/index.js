@@ -68,6 +68,7 @@ export const getUserInfo = (dispatch, token) => {
   fetch(url, config)
     .then((res) => res.json())
     .then((data) => {
+      console.log("user/me", data);
       dispatch(setUserInfo(data));
     });
 };
