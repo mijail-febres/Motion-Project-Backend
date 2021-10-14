@@ -26,7 +26,8 @@ class UserAdmin(UserAdmin):
         ("Groups", {"fields": ("groups",)}),
         (
             "Social",
-            {"fields": ("location", "about_me", "job", "followees", "liked_posts")},
+            # {"fields": ("location", "about_me", "job", "followees", "liked_posts")},
+            {"fields": ("location", "about_me", "job", "followees")},
         ),
     )
     list_display = ("email", "first_name", "last_name", "is_staff")
