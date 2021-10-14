@@ -2,8 +2,6 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.conf import settings
 
-# from post.models import Post
-
 
 def user_directory_path(instance, filename):
     return f"{instance.id}/{filename}"
@@ -52,6 +50,19 @@ class User(AbstractUser):
         verbose_name="followees",
         to=settings.AUTH_USER_MODEL,
         related_name="followers",
+        blank=True,
+    )
+
+    friend_request = models.ManyToManyField(
+        verbose_name="friend_request",
+        to=settings.AUTH_USER_MODEL,
+        related_name="requested_from",
+        blank=True,
+    )
+
+    friends_with = models.ManyToManyField(
+        to=settings.AUTH_USER_MODEL,
+        related_name="friends_of",
         blank=True,
     )
 

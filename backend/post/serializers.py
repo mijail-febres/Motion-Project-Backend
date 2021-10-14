@@ -4,7 +4,7 @@ from .models import Post
 
 
 class PostSerializer(serializers.ModelSerializer):
-    comment = CommentSerializer(many=True, required=False)
+    comments = CommentSerializer(many=True, required=False)
 
     class Meta:
         model = Post
@@ -19,6 +19,6 @@ class PostSerializer(serializers.ModelSerializer):
             "created",
             "updated",
             "shared",
-            "comment",
+            "comments",
         ]
         read_only_fields = ["author"]

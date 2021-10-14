@@ -101,6 +101,7 @@ class ToggleLikePost(GenericAPIView):
 class CommentPostView(GenericAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
+    lookup_field = "id"
 
     def get(self, request, *args, **kwargs):
         post = self.get_object()
@@ -109,10 +110,10 @@ class CommentPostView(GenericAPIView):
     def post(self, request, *args, **kwargs):
         post = self.get_object()
         user = request.user
-        comment_obj, created = Comment.objects.get_or_create(
+        comments_obj, created = Comment.objects.get_or_create(
             user=user, content=request.data["content"]
         )
-        post.comment.add(comment_obj)
+        post.comments.add(comments_obj)
         return Response(self.get_serializer(post).data)
 
 

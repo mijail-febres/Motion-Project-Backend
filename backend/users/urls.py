@@ -6,6 +6,9 @@ from .views import (
     FollowingUsersView,
     ListUserView,
     ReadUpdateDeleteUser,
+    ListFriendsView,
+    FriendRequestView,
+    FriendRequestUserView,
 )
 
 urlpatterns = [
@@ -15,4 +18,7 @@ urlpatterns = [
     path("social/followers/toggle-follow/<int:pk>/", FollowUsersView.as_view()),
     path("social/followers/followers/", FollowersUsersView.as_view()),
     path("social/followers/following/", FollowingUsersView.as_view()),
+    path("social/friends/request/<int:pk>/", FriendRequestView.as_view()),
+    path("social/friends/requests/<int:pk>/", FriendRequestUserView.as_view()),
+    path("social/friends/", ListFriendsView.as_view()),
 ]
