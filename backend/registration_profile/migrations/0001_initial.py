@@ -3,6 +3,7 @@
 from django.conf import settings
 from django.db import migrations, models
 import django.db.models.deletion
+import registration_profile.models
 
 
 class Migration(migrations.Migration):
@@ -15,13 +16,11 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Comment',
+            name='RegistrationProfile',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('content', models.CharField(default='', max_length=200)),
-                ('created', models.DateTimeField(auto_now_add=True)),
-                ('changed', models.DateTimeField(auto_now=True)),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='comments', to=settings.AUTH_USER_MODEL)),
+                ('code', models.IntegerField(default=registration_profile.models.code_generator)),
+                ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='registration_profile', to=settings.AUTH_USER_MODEL)),
             ],
         ),
     ]
