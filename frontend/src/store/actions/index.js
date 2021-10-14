@@ -46,13 +46,14 @@ export const getUserToken = (dispatch, email, password) => {
   fetch(url, config)
     .then((res) => res.json())
     .then((data) => {
+      console.log(data)
       localStorage.setItem("motion-auth-token", data.access);
       dispatch(setTokenAndUser(data.access, data.user));
     });
 };
 
 export const getUserInfo = (dispatch, token) => {
-  const url = "https://motion.propulsion-home.ch/backend/api/users/me/";
+  const url = "https://motion.propulsion-home.ch/backend/api/users/1/";
   const headers = new Headers({
     "Content-Type": "application/json",
     Authorization: `Bearer ${token}`,
