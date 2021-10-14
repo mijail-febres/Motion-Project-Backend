@@ -62,6 +62,14 @@ MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
 ]
 
+CORS_ALLOWED_ORIGINS = [
+    "https://motion-backend-team-dmj.propulsion-learn.ch",
+    "http://localhost:3000",
+    "http://localhost:8000",
+    "http://127.0.0.1:3000",
+    "http://127.0.0.1:8000",
+    ]
+
 ROOT_URLCONF = "project.urls"
 
 TEMPLATES = [
