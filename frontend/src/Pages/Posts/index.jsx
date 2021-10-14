@@ -40,7 +40,9 @@ const Posts = (props) => {
       };
       fetch(url, config)
         .then((res) => res.json())
-        .then((data) => setPosts(data.results));
+        .then((data) => {
+          console.log(data)
+          setPosts(data)});
     } else {
       history.push("/");
     }
@@ -102,18 +104,22 @@ const Posts = (props) => {
               <Post
                 key={post.id}
                 content={post.content}
-                avatar={post.user.avatar}
-                name={`${post.user.first_name} ${post.user.last_name}`}
-                created={post.created}
-                photos={post.images[0] ? post.images : null}
-                likesAmmount={post.amount_of_likes}
-                likedByMe={post.logged_in_user_liked}
-                id={post.id}
-                likePost={likePost}
-                deletePost={deletePost}
-                username={post.user.username}
-                userID={post.user.id}
               />
+            //   <Post
+            //   key={post.id}
+            //   content={post.content}
+            //   avatar={post.user.avatar}
+            //   name={`${post.user.first_name} ${post.user.last_name}`}
+            //   created={post.created}
+            //   photos={post.images[0] ? post.images : null}
+            //   likesAmmount={post.amount_of_likes}
+            //   likedByMe={post.logged_in_user_liked}
+            //   id={post.id}
+            //   likePost={likePost}
+            //   deletePost={deletePost}
+            //   username={post.user.username}
+            //   userID={post.user.id}
+            // />
             ))
           : null}
       </Masonry>

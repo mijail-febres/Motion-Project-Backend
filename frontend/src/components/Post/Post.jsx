@@ -85,44 +85,47 @@ const Post = (props) => {
 
   return (
     <PostOuterWrapper>
-      <PostHeaderWrapper>
-        <AvatarImg src={!props.avatar ? testImg : props.avatar} alt="av" />
-        <SubHeaderWrapper>
-          <PosterName onClick={() => goToUserProfile()}>
-            {props.name}
-          </PosterName>
-          <PostTime>{postTimeDifference}</PostTime>
-        </SubHeaderWrapper>
-        <BurgerMenu deletePost={props.deletePost} id={props.id} />
-      </PostHeaderWrapper>
       <PostContent>{props.content}</PostContent>
-      {props.photos ? (
-        props.photos.length > 1 ? (
-          <Masonry
-            breakpointCols={breakpointColumnsObj}
-            className="my-masonrypost-grid"
-            columnClassName="my-masonrypost-grid_column"
-          >
-            {props.photos.map((photo) => (
-              <PostedImgMultiple src={photo.image} alt="wat" />
-            ))}
-          </Masonry>
-        ) : (
-          <PostedImg src={props.photos[0].image} alt="wat" />
-        )
-      ) : null}
-      <PostFooterWrapper>
-        <LikeShareButtonsWrapper onClick={() => props.likePost(props.id)}>
-          {props.likedByMe ? <LikedHeartIcon /> : <HeartIcon />}
-          Like
-        </LikeShareButtonsWrapper>
-        <LikeShareButtonsWrapper>
-          <ShareIcon />
-          Share
-        </LikeShareButtonsWrapper>
-        <NumOfLikesWrapper>{props.likesAmmount} Likes</NumOfLikesWrapper>
-      </PostFooterWrapper>
     </PostOuterWrapper>
+    // <PostOuterWrapper>
+    //   <PostHeaderWrapper>
+    //     <AvatarImg src={!props.avatar ? testImg : props.avatar} alt="av" />
+    //     <SubHeaderWrapper>
+    //       <PosterName onClick={() => goToUserProfile()}>
+    //         {props.name}
+    //       </PosterName>
+    //       <PostTime>{postTimeDifference}</PostTime>
+    //     </SubHeaderWrapper>
+    //     <BurgerMenu deletePost={props.deletePost} id={props.id} />
+    //   </PostHeaderWrapper>
+    //   <PostContent>{props.content}</PostContent>
+    //   {props.photos ? (
+    //     props.photos.length > 1 ? (
+    //       <Masonry
+    //         breakpointCols={breakpointColumnsObj}
+    //         className="my-masonrypost-grid"
+    //         columnClassName="my-masonrypost-grid_column"
+    //       >
+    //         {props.photos.map((photo) => (
+    //           <PostedImgMultiple src={photo.image} alt="wat" />
+    //         ))}
+    //       </Masonry>
+    //     ) : (
+    //       <PostedImg src={props.photos[0].image} alt="wat" />
+    //     )
+    //   ) : null}
+    //   <PostFooterWrapper>
+    //     <LikeShareButtonsWrapper onClick={() => props.likePost(props.id)}>
+    //       {props.likedByMe ? <LikedHeartIcon /> : <HeartIcon />}
+    //       Like
+    //     </LikeShareButtonsWrapper>
+    //     <LikeShareButtonsWrapper>
+    //       <ShareIcon />
+    //       Share
+    //     </LikeShareButtonsWrapper>
+    //     <NumOfLikesWrapper>{props.likesAmmount} Likes</NumOfLikesWrapper>
+    //   </PostFooterWrapper>
+    // </PostOuterWrapper>
   );
 };
 
