@@ -30,6 +30,8 @@ export const setUserClicked = (user) => {
 export const getUserToken = (dispatch, email, password) => {
   // const url = "https://motion.propulsion-home.ch/backend/api/auth/token/";
   const url = "https://motion-backend-team-dmj.propulsion-learn.ch/backend/api/auth/token/";
+  // const url = "http://localhost:8000/backend/api/auth/token/";
+
   const headers = new Headers({
     "Content-Type": "application/json",
   });
@@ -46,14 +48,15 @@ export const getUserToken = (dispatch, email, password) => {
   fetch(url, config)
     .then((res) => res.json())
     .then((data) => {
-      console.log(data)
+      console.log(data);
       localStorage.setItem("motion-auth-token", data.access);
       dispatch(setTokenAndUser(data.access, data.user));
     });
 };
 
 export const getUserInfo = (dispatch, token) => {
-  const url = "https://motion.propulsion-home.ch/backend/api/users/1/";
+  const url = "https://motion-backend-team-dmj.propulsion-learn.ch/backend/api/users/1/";
+  // const url = "http://localhost:8000/backend/api/users/1/";
   const headers = new Headers({
     "Content-Type": "application/json",
     Authorization: `Bearer ${token}`,

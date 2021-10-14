@@ -29,7 +29,8 @@ const Posts = (props) => {
       dispatch(setToken(tokenInLocalStorage));
       dispatch(() => getUserInfo(dispatch, tokenInLocalStorage));
       const url =
-        "https://motion.propulsion-home.ch/backend/api/social/posts/?limit=20";
+      "https://motion-backend-team-dmj.propulsion-learn.ch/backend/api/social/posts/";
+      // "https://motion.propulsion-home.ch/backend/api/social/posts/?limit=20";
       const headers = new Headers({
         "Content-Type": "application/json",
         Authorization: `Bearer ${tokenInLocalStorage}`,
