@@ -23,15 +23,16 @@ const CreatePost = (props) => {
     console.log("submitting post");
     console.log("content", content);
     console.log("image", image);
-    const url = "https://motion.propulsion-home.ch/backend/api/social/posts/";
+    const url =
+      "https://motion-backend-team-dmj.propulsion-learn.ch/backend/api/social/posts/";
     const token = localStorage.getItem("motion-auth-token");
-    const headers = new Headers({
-      Authorization: `Bearer ${token}`,
-    });
-
+    const headers = new Headers();
+    headers.append("Authorization", `Bearer ${token}`);
+    console.log("headers:", headers);
     const formData = new FormData();
     formData.append("images", image);
     formData.append("content", content);
+    formData.append("title", "test");
 
     const method = "POST";
     const config = {
@@ -39,7 +40,7 @@ const CreatePost = (props) => {
       headers,
       body: formData,
     };
-
+    console.log("config", config);
     fetch(url, config).then((res) => {
       console.log(res);
       props.rerenderFunction();
